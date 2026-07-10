@@ -1,0 +1,25 @@
+<header class="topbar">
+  <a class="brand" routerLink="/" (click)="closeMenu()">
+    <span class="brand-mark">RJ</span>
+    <span class="brand-name">Rohith<span class="mono">.dev</span></span>
+  </a>
+
+  <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav" [class.open]="menuOpen()">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+    <a href="https://github.com/Rohith723" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/rohith-jangam-086315210/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="cta" href="mailto:rohithkumarjangam@gmail.com">Say hi</a>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="site-footer">
+  <p class="mono">© 2026 Jangam Rohith Kumar — built with Angular</p>
+</footer>

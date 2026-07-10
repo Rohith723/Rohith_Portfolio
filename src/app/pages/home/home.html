@@ -1,0 +1,164 @@
+<div #root>
+<section class="hero">
+  <div class="hero-copy reveal">
+    <p class="eyebrow mono">Fresher — .NET Core + Angular</p>
+    <h1>Hi, I'm Rohith. I'm learning to build full stack apps well.</h1>
+    <p class="lede">
+      B.Tech in Data Science, trained on the .NET + Angular stack. I'm most
+      comfortable with C# and ASP.NET Core, and I'm still building up my
+      Angular skills — this site is one of the ways I practice.
+      Based in Hyderabad, Telangana.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="mailto:rohithkumarjangam@gmail.com">Get in touch</a>
+      <a class="btn ghost" href="/assets/resume.pdf" download>Download résumé</a>
+      <a class="btn ghost" href="https://github.com/Rohith723" target="_blank" rel="noopener">View GitHub</a>
+    </div>
+  </div>
+
+  <div class="status-card mono reveal" aria-hidden="true">
+    <div class="status-bar">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="path">GET /developer/rohith</span>
+    </div>
+    <pre>{{ '{' }}
+  "name": "Jangam Rohith Kumar",
+  "role": "Full Stack .NET + Angular Dev",
+  "location": "Hyderabad, IN",
+  "status": "open_to_work",
+  "stack": ["C#", "ASP.NET Core", "Angular", "SQL Server"]
+{{ '}' }}</pre>
+    <div class="status-bar footer">
+      <span class="pulse"></span> 200 OK · 42ms
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip reveal">
+  @for (stat of stats; track stat.label) {
+    <div class="stat">
+      <span class="stat-value mono">{{ stat.value }}</span>
+      <span class="stat-label">{{ stat.label }}</span>
+    </div>
+  }
+</section>
+
+<section class="section about reveal">
+  <div class="about-grid">
+    <div class="avatar-block">
+      <div class="avatar mono">RJ</div>
+    </div>
+    <div class="about-copy">
+      <h2>About</h2>
+      <p class="body-text">
+        I'm a fresher looking for my first full stack role. My training covered
+        ASP.NET Core Web API and EF Core on the backend, and Angular on the
+        frontend — I'm more confident with the .NET side right now and still
+        actively improving my Angular skills.
+      </p>
+      <p class="body-text">
+        I build small projects outside of coursework (like the ones below, and
+        this site) mainly to practice — working through real problems instead
+        of just following tutorials.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <span class="section-eyebrow mono">Skills</span>
+  <h2>What I work with</h2>
+  <div class="skills-grid">
+    @for (group of skillGroups; track group.label) {
+      <div class="skill-card">
+        <h3 class="mono">{{ group.label }}</h3>
+        <ul>
+          @for (item of group.items; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section reveal">
+  <span class="section-eyebrow mono">Work</span>
+  <h2>Projects</h2>
+  <div class="projects">
+    @for (project of projects; track project.name) {
+      <article class="project-card">
+        <div class="project-visual" [class]="project.mockup">
+          @if (project.mockup === 'hotel') {
+            <div class="mockup-window">
+              <div class="mockup-titlebar"><span></span><span></span><span></span></div>
+              <div class="mockup-body hotel-body">
+                <div class="mockup-sidebar"></div>
+                <div class="mockup-main">
+                  <div class="mockup-row"></div>
+                  <div class="mockup-cards">
+                    <div class="mockup-card"></div>
+                    <div class="mockup-card"></div>
+                    <div class="mockup-card"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          } @else {
+            <div class="mockup-window">
+              <div class="mockup-titlebar"><span></span><span></span><span></span></div>
+              <div class="mockup-body auth-body">
+                <div class="mockup-lock">🔒</div>
+                <div class="mockup-field"></div>
+                <div class="mockup-field short"></div>
+                <div class="mockup-button"></div>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="project-content">
+          <div class="project-head">
+            <h3>{{ project.name }}</h3>
+            <span class="year mono">{{ project.year }}</span>
+          </div>
+          <p>{{ project.summary }}</p>
+          <div class="stack-tags">
+            @for (tech of project.stack; track tech) {
+              <span class="tag mono">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section reveal">
+  <span class="section-eyebrow mono">Background</span>
+  <h2>Experience</h2>
+  <div class="timeline-card">
+    <div class="timeline-head">
+      <h3>Full Stack .NET Developer — Training</h3>
+      <span class="mono">Naresh i Technologies · 2025–2026</span>
+    </div>
+    <p>
+      Intensive, industry-aligned program across the full .NET + Angular stack —
+      building REST APIs with ASP.NET Core Web API, securing endpoints with JWT,
+      and consuming them from Angular frontends. Practiced Agile workflows and
+      Git version control alongside EF Core for database-first and code-first
+      development on SQL Server.
+    </p>
+  </div>
+</section>
+
+<section class="section contact reveal">
+  <h2>Let's talk</h2>
+  <p>Looking for my first full stack role — open to internships and junior positions.</p>
+  <div class="contact-links">
+    <a class="btn primary" href="mailto:rohithkumarjangam@gmail.com">rohithkumarjangam&#64;gmail.com</a>
+    <a class="btn ghost" href="tel:+916301706936">+91 63017 06936</a>
+  </div>
+</section>
+</div>

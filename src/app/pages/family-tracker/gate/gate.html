@@ -1,0 +1,23 @@
+<section class="gate-wrap">
+  <form class="gate-card" (submit)="$event.preventDefault(); submit()">
+    <p class="eyebrow mono">Private area</p>
+    <h1>Enter the passcode</h1>
+    <p class="lede">This page manages who's sharing their location with you. It's not part of the public site.</p>
+
+    <input
+      type="password"
+      placeholder="Passcode"
+      [value]="passcode()"
+      (input)="passcode.set($any($event.target).value)"
+      autocomplete="off"
+    />
+
+    @if (error()) {
+      <p class="error">That's not right. Try again.</p>
+    }
+
+    <button class="btn primary" type="submit" [disabled]="checking()">
+      {{ checking() ? 'Checking…' : 'Unlock' }}
+    </button>
+  </form>
+</section>
