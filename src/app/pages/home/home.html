@@ -16,22 +16,36 @@
     </div>
   </div>
 
-  <div class="status-card mono reveal" aria-hidden="true">
-    <div class="status-bar">
+  <div class="terminal reveal" (click)="focusTerminal()">
+    <div class="terminal-bar">
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
-      <span class="path">GET /developer/rohith</span>
+      <span class="terminal-path mono">rohith@portfolio: ~</span>
     </div>
-    <pre>{{ '{' }}
-  "name": "Jangam Rohith Kumar",
-  "role": "Full Stack .NET + Angular Dev",
-  "location": "Hyderabad, IN",
-  "status": "open_to_work",
-  "stack": ["C#", "ASP.NET Core", "Angular", "SQL Server"]
-{{ '}' }}</pre>
-    <div class="status-bar footer">
-      <span class="pulse"></span> 200 OK · 42ms
+    <div class="terminal-body mono" #terminalBody>
+      @for (line of terminalLines; track $index) {
+        @if (line.type === 'input') {
+          <div class="term-line term-input"><span class="prompt">&gt;</span> {{ line.text }}</div>
+        } @else {
+          <div class="term-line term-output">{{ line.text }}</div>
+        }
+      }
+      <div class="term-line term-active">
+        <span class="prompt">&gt;</span>
+        <input
+          #terminalInputEl
+          class="term-field mono"
+          type="text"
+          [value]="terminalInput"
+          (input)="terminalInput = $any($event.target).value"
+          (keydown.enter)="runCommand()"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="try: help"
+        />
+        <span class="cursor"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -39,7 +53,11 @@
 <section class="stats-strip reveal">
   @for (stat of stats; track stat.label) {
     <div class="stat">
-      <span class="stat-value mono">{{ stat.value }}</span>
+      @if (stat.numericTarget) {
+        <span class="stat-value mono" [attr.data-count-target]="stat.numericTarget">0</span>
+      } @else {
+        <span class="stat-value mono small">{{ stat.value }}</span>
+      }
       <span class="stat-label">{{ stat.label }}</span>
     </div>
   }
@@ -47,9 +65,7 @@
 
 <section class="section about reveal">
   <div class="about-grid">
-    <div class="avatar-block">
-      <div class="avatar mono">RJ</div>
-    </div>
+    <div class="avatar mono">RJ</div>
     <div class="about-copy">
       <h2>About</h2>
       <p class="body-text">
@@ -124,6 +140,14 @@
             <span class="year mono">{{ project.year }}</span>
           </div>
           <p>{{ project.summary }}</p>
+          <div class="endpoint-list mono">
+            @for (ep of project.endpoints; track ep.path) {
+              <div class="endpoint-row">
+                <span class="method-badge" [class]="ep.method.toLowerCase()">{{ ep.method }}</span>
+                <span class="endpoint-path">{{ ep.path }}</span>
+              </div>
+            }
+          </div>
           <div class="stack-tags">
             @for (tech of project.stack; track tech) {
               <span class="tag mono">{{ tech }}</span>
