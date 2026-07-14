@@ -1,7 +1,10 @@
 <div #root>
 <section class="hero">
-  <div class="hero-copy reveal">
-    <p class="eyebrow mono">Fresher — .NET Core + Angular</p>
+  <div class="hero-copy">
+    <span class="eyebrow-pill mono">
+      <span class="pill-dot"></span>
+      Fresher — .NET Core + Angular
+    </span>
     <h1>Hi, I'm Rohith. I'm learning to build full stack apps well.</h1>
     <p class="lede">
       B.Tech in Data Science, trained on the .NET + Angular stack. I'm most
@@ -10,13 +13,21 @@
       Based in Hyderabad, Telangana.
     </p>
     <div class="hero-actions">
-      <a class="btn primary" href="mailto:rohithkumarjangam@gmail.com">Get in touch</a>
-      <a class="btn ghost" href="/assets/resume.pdf" download>Download résumé</a>
+      <!-- FIXED: Properties moved inside the opening tag -->
+      <a 
+        #magneticBtn
+        class="btn primary magnetic"
+        href="mailto:rohithkumarjangam@gmail.com"
+        (mousemove)="onMagneticMove($event, magneticBtn)"
+        (mouseleave)="onMagneticLeave(magneticBtn)">
+        Get in touch
+      </a>
+      <a class="btn ghost" href="/assets/resume.pdf" download>Download resume</a>
       <a class="btn ghost" href="https://github.com/Rohith723" target="_blank" rel="noopener">View GitHub</a>
     </div>
   </div>
 
-  <div class="terminal reveal" (click)="focusTerminal()">
+  <div class="terminal" (click)="focusTerminal()">
     <div class="terminal-bar">
       <span class="dot"></span>
       <span class="dot"></span>
@@ -31,6 +42,11 @@
           <div class="term-line term-output">{{ line.text }}</div>
         }
       }
+      @if (loading) {
+        <div class="term-line term-loading">
+          <span class="ldrs-ring"></span>
+        </div>
+      }
       <div class="term-line term-active">
         <span class="prompt">&gt;</span>
         <input
@@ -40,6 +56,7 @@
           [value]="terminalInput"
           (input)="terminalInput = $any($event.target).value"
           (keydown.enter)="runCommand()"
+          [disabled]="loading"
           autocomplete="off"
           spellcheck="false"
           placeholder="try: help"
@@ -181,7 +198,7 @@
   <h2>Let's talk</h2>
   <p>Looking for my first full stack role — open to internships and junior positions.</p>
   <div class="contact-links">
-    <a class="btn primary" href="mailto:rohithkumarjangam@gmail.com">rohithkumarjangam&#64;gmail.com</a>
+    <a class="btn primary" href="mailto:rohithkumarjangam@gmail.com">rohithkumarjangam@gmail.com</a>
     <a class="btn ghost" href="tel:+916301706936">+91 63017 06936</a>
   </div>
 </section>

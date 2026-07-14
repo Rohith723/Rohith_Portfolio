@@ -152,24 +152,38 @@ export class Home implements AfterViewInit, OnDestroy {
     requestAnimationFrame(step);
   }
 
+  protected loading = false;
+
   runCommand() {
     const raw = this.terminalInput.trim();
     if (!raw) return;
     this.terminalLines.push({ type: 'input', text: raw });
+    this.terminalInput = '';
 
     const key = raw.toLowerCase();
     if (key === 'clear') {
       this.terminalLines.length = 0;
-    } else if (this.commands[key]) {
-      this.terminalLines.push({ type: 'output', text: this.commands[key]() });
-    } else {
-      this.terminalLines.push({
-        type: 'output',
-        text: `command not found: ${raw}. Type 'help' to see what's available.`,
-      });
+      return;
     }
 
-    this.terminalInput = '';
+    this.loading = true;
+    this.scrollTerminalToBottom();
+
+    setTimeout(() => {
+      if (this.commands[key]) {
+        this.terminalLines.push({ type: 'output', text: this.commands[key]() });
+      } else {
+        this.terminalLines.push({
+          type: 'output',
+          text: `command not found: ${raw}. Type 'help' to see what's available.`,
+        });
+      }
+      this.loading = false;
+      this.scrollTerminalToBottom();
+    }, 450 + Math.random() * 300);
+  }
+
+  private scrollTerminalToBottom() {
     setTimeout(() => {
       const body = this.terminalBodyRef?.nativeElement;
       if (body) body.scrollTop = body.scrollHeight;
@@ -178,6 +192,19 @@ export class Home implements AfterViewInit, OnDestroy {
 
   focusTerminal() {
     this.terminalInputRef?.nativeElement.focus();
+  }
+
+  onMagneticMove(event: MouseEvent, el: HTMLElement) {
+    const rect = el.getBoundingClientRect();
+    const relX = event.clientX - rect.left - rect.width / 2;
+    const relY = event.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${relX * 0.25}px, ${relY * 0.4}px)`;
+  }
+
+  onMagneticLeave(el: HTMLElement) {
+    el.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    el.style.transform = 'translate(0, 0)';
+    setTimeout(() => (el.style.transition = ''), 350);
   }
 
   ngOnDestroy() {

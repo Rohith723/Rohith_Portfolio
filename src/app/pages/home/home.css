@@ -1,17 +1,103 @@
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 48px;
   align-items: center;
   padding: 8vh 6vw 10vh;
+  overflow: hidden;
 }
 
-.eyebrow {
-  color: var(--accent);
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 45% at 20% 25%, rgba(94, 234, 212, 0.14), transparent 70%),
+    radial-gradient(32% 40% at 80% 65%, rgba(245, 158, 11, 0.1), transparent 70%);
+  filter: blur(50px);
+  animation: auroraDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+  from { transform: translate(-3%, -2%) scale(1); }
+  to { transform: translate(3%, 3%) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-copy > * {
+  opacity: 0;
+  animation: heroIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-copy > .eyebrow-pill { animation-delay: 0.05s; }
+.hero-copy > h1 { animation-delay: 0.16s; }
+.hero-copy > .lede { animation-delay: 0.3s; }
+.hero-copy > .hero-actions { animation-delay: 0.44s; }
+
+.terminal {
+  opacity: 0;
+  animation: heroIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.22s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *, .terminal {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    110deg,
+    var(--surface) 8%,
+    var(--surface-2) 18%,
+    var(--accent-soft) 28%,
+    var(--surface-2) 38%,
+    var(--surface) 50%
+  );
+  background-size: 250% 100%;
+  animation: shine 3.5s linear infinite;
+  color: var(--text);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  flex-shrink: 0;
+}
+@keyframes shine {
+  to { background-position-x: -250%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow-pill { animation: none; }
+}
+
+.btn.magnetic {
+  transition: transform 0.05s linear;
+  will-change: transform;
+  display: inline-block;
 }
 
 .hero h1 {
@@ -119,6 +205,17 @@
   animation: blink 1s step-end infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+
+.term-loading { display: flex; align-items: center; padding: 4px 0; }
+.ldrs-ring {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  animation: ldrs-spin 0.7s linear infinite;
+}
+@keyframes ldrs-spin { to { transform: rotate(360deg); } }
 
 .reveal {
   opacity: 0;
