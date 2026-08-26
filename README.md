@@ -1,59 +1,46 @@
-# FamilyPortfolio
+# 🌐 Rohith Kumar | Personal Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Portfolio-blue?style=for-the-badge&logo=vercel)](https://rohith-portfolio-peach.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/Rohith723/Rohith_Portfolio?style=for-the-badge)](https://github.com/Rohith723/Rohith_Portfolio/stargazers)
 
-## Development server
+An interactive, responsive developer portfolio built to showcase modern web applications, full-stack architectures, technical skill sets, and personal projects.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 Live Preview
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Experience the live site: **[rohith-portfolio-peach.vercel.app](https://rohith-portfolio-peach.vercel.app)**
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ✨ Features
 
-```bash
-ng generate component component-name
-```
+- **Dynamic Project Showcase:** Filterable cards highlighting architecture, tech stacks, and live demo links.
+- **Skills Matrix:** Visual categorization of frontend, backend, database, and DevOps competencies.
+- **Interactive UI:** Smooth transitions, responsive navigation, and mobile-first layouts.
+- **Direct Contact Channel:** Functional contact form and quick-access social profiles.
+- **Optimized Performance:** Fast load times with streamlined asset delivery via Vercel.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🛠️ Tech Stack
 
-## Building
+- **Frontend:** HTML5, CSS3, JavaScript / TypeScript, Responsive Layouts
+- **Frameworks & Libraries:** Angular / Modern Web Components
+- **Hosting & CI/CD:** Vercel, GitHub Actions
+- **Version Control:** Git, GitHub
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 📁 Project Structure
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+Rohith_Portfolio/
+├── src/
+│   ├── assets/          # Static images, icons, and resume PDF
+│   ├── components/      # Reusable UI modules (Navbar, Footer, Hero, etc.)
+│   ├── styles/          # Global styles, variables, and themes
+│   └── index.html       # Root HTML entry point
+├── package.json         # Project dependencies and build scripts
+└── README.md            # Repository documentation
