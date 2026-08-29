@@ -8,6 +8,13 @@ An interactive, responsive developer portfolio built to showcase modern web appl
 
 ---
 
+## 📸 Preview
+
+
+![Portfolio Preview](public/preview.png)
+
+---
+
 ## 🚀 Live Preview
 
 Experience the live site: **[rohith-portfolio-peach.vercel.app](https://rohith-portfolio-peach.vercel.app)**
@@ -44,3 +51,50 @@ Rohith_Portfolio/
 │   └── index.html       # Root HTML entry point
 ├── package.json         # Project dependencies and build scripts
 └── README.md            # Repository documentation
+```
+
+---
+
+## ⚙️ Getting Started
+
+Clone and run the project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/Rohith723/Rohith_Portfolio.git
+
+# Navigate into the project
+cd Rohith_Portfolio
+
+# Install dependencies
+npm install
+
+# Start the development server
+ng serve
+```
+
+Then open `http://localhost:4200` in your browser.
+
+---
+
+## 📬 Contact
+
+- **Portfolio:** [rohith-portfolio-peach.vercel.app](https://rohith-portfolio-peach.vercel.app)
+- **GitHub:** [@Rohith723](https://github.com/Rohith723)
+
+**LinkedIn:** [linkedin.com/in/rohith-jangam-086315210](https://linkedin.com)
+**Email:** rohithkumarjangam@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Rohith Kumar**
+
+</div>
